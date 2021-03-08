@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: for-deploy
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
     volumes:
