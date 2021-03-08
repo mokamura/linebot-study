@@ -31,15 +31,11 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	
 	Envs: 
 	  PORT: %s
-	  CHANNEL_SECRET: %s
-	  CHANNEL_ACCESS_TOKEN: %s
 	`
 	fmt.Fprintf(
 		w,
 		msg,
 		os.Getenv("PORT"),
-		os.Getenv("CHANNEL_SECRET"),
-		os.Getenv("CHANNEL_ACCESS_TOKEN"),
 	)
 }
 
