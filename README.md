@@ -24,7 +24,7 @@ $ open http://localhost:8080
 ```Bash
 $ heroku login
 $ heroku git:remote -a ${my-app-name-on-heroku}
-$ heroku config:set CHANNEL_SECRET=${channel-secret-on-line} CHANNEL_ACCESS_TOKEN=${channel-access-token-on-line}
+$ heroku config:set CHANNEL_SECRET=${channel-secret-on-line} CHANNEL_ACCESS_TOKEN=${channel-access-token-on-line} HOTPEPPER_API_KEY=${api-key-on-recruit-web-service}
 ```
 
 3. deploy
