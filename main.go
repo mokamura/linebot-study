@@ -64,8 +64,8 @@ func lineHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, event := range events {
-		// イベントがメッセージの受信だった場合
 		if event.Type == linebot.EventTypeMessage {
+			// イベントがメッセージの受信だった場合
 			switch message := event.Message.(type) {
 			// メッセージがテキスト形式の場合
 			case *linebot.TextMessage:
@@ -78,6 +78,15 @@ func lineHandler(w http.ResponseWriter, r *http.Request) {
 			// メッセージが位置情報の場合
 			case *linebot.LocationMessage:
 				sendRestInfo(bot, event)
+			}
+		} else if event.Type == linebot.EventTypeBeacon {
+			// ビーコンイベントの場合
+			if event.Beacon.Type == linebot.BeaconEventTypeEnter {
+				message := fmt.Sprintf("おかえりなさい: %s", event.Source.UserID)
+				_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(message)).Do()
+				if err != nil {
+					log.Print(err)
+				}
 			}
 		}
 	}
